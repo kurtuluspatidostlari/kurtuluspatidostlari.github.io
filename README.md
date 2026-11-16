@@ -1,0 +1,1 @@
+# kurtuluspatidostlari.github.io
