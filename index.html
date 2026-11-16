@@ -4,35 +4,107 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kurtuluş Pati Dostları</title>
-<meta name="description" content="Kurtuluş Pati Dostları – Her patiye bir yuva.">
+<meta name="description" content="Kurtuluş Pati Dostları">
+<meta name="theme-color" content="#0f3a27">
 <style>
-  :root { --green:#123f2c; --green-deep:#0b2a1d; --gold:#e3bd5a; --cream:#f7f3ea; }
-  * { box-sizing:border-box; margin:0; }
-  html, body { height:100%; }
+  :root { --green:#17523a; --green-deep:#0a2a1c; --gold:#e6c060; --gold-soft:#f3dc9a; --cream:#f8f3e6; --red:#c8433c; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html, body { min-height:100%; }
   body {
-    display:flex; align-items:center; justify-content:center;
-    padding:32px 24px; text-align:center;
-    background:radial-gradient(circle at 50% 30%, var(--green) 0%, var(--green-deep) 100%);
+    min-height:100vh; min-height:100dvh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding:48px 24px 120px; text-align:center; position:relative; overflow:hidden;
     color:var(--cream);
     font-family:Georgia, "Times New Roman", serif;
+    background:
+      radial-gradient(ellipse at 20% 15%, rgba(46,125,86,.55) 0%, transparent 45%),
+      radial-gradient(ellipse at 85% 75%, rgba(36,105,72,.5) 0%, transparent 50%),
+      radial-gradient(circle at 50% 40%, var(--green) 0%, var(--green-deep) 100%);
   }
-  main { max-width:520px; }
-  .paws { font-size:28px; letter-spacing:14px; margin-bottom:28px; opacity:.9; }
-  h1 { font-size:clamp(34px, 9vw, 54px); line-height:1.1; font-weight:700; }
-  h1 span { display:block; font-weight:400; font-size:.62em; margin-top:6px; }
-  .slogan { margin-top:22px; font-style:italic; font-size:clamp(20px, 5.5vw, 26px); color:var(--gold); }
-  .rule { width:64px; height:2px; background:var(--gold); margin:30px auto; opacity:.7; }
-  .soon { font-family:system-ui, -apple-system, "Segoe UI", sans-serif; font-size:17px; line-height:1.6; }
-  .soon strong { display:block; font-size:13px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+
+  /* yıldızlar */
+  .star { position:absolute; fill:var(--gold); opacity:.85; animation:twinkle 3.5s ease-in-out infinite; }
+  .star.s2 { animation-delay:1.2s; } .star.s3 { animation-delay:2.1s; } .star.s4 { animation-delay:.6s; }
+  @keyframes twinkle { 0%,100% { opacity:.3; transform:scale(.85);} 50% { opacity:1; transform:scale(1);} }
+
+  main { position:relative; z-index:2; max-width:560px; width:100%; }
+
+  .badge {
+    width:92px; height:92px; margin:0 auto 30px; border-radius:50%;
+    background:var(--cream); border:3px solid var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+  .badge svg { width:52px; height:52px; fill:var(--green); }
+
+  h1 { font-weight:700; letter-spacing:.06em; font-size:clamp(34px, 10vw, 58px); line-height:1.05; }
+  h1 span { display:block; font-weight:400; letter-spacing:.02em; font-size:.6em; margin-top:8px; color:var(--gold-soft); }
+
+  .divider { display:flex; align-items:center; justify-content:center; gap:14px; margin:28px 0 24px; }
+  .divider i { display:block; width:56px; height:2px; background:var(--gold); opacity:.75; border-radius:2px; }
+  .divider svg { width:20px; height:20px; fill:var(--red); }
+
+  .slogan { font-style:italic; font-size:clamp(20px, 5.6vw, 28px); color:var(--cream); }
+
+  .soon {
+    display:inline-block; margin-top:8px; padding:12px 30px; border-radius:999px;
+    border:2px solid var(--gold); color:var(--gold);
+    font-family:system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size:15px; font-weight:600; letter-spacing:.22em; text-transform:uppercase;
+  }
+
+  /* alttaki pati şeridi */
+  .paws { position:absolute; left:0; right:0; bottom:28px; z-index:1; display:flex; justify-content:center; gap:clamp(10px, 4vw, 26px); }
+  .paws svg { width:clamp(26px, 7vw, 40px); height:auto; }
+  .paws svg:nth-child(odd)  { fill:var(--gold);  transform:rotate(-12deg); }
+  .paws svg:nth-child(even) { fill:var(--cream); transform:rotate(12deg) translateY(-8px); }
+
+  @media (prefers-reduced-motion: reduce) { .star { animation:none; } }
 </style>
 </head>
 <body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="paw" viewBox="0 0 64 64">
+      <ellipse cx="14" cy="27" rx="6.5" ry="8.5" transform="rotate(-20 14 27)"/>
+      <ellipse cx="25.5" cy="15" rx="6.5" ry="9"/>
+      <ellipse cx="38.5" cy="15" rx="6.5" ry="9"/>
+      <ellipse cx="50" cy="27" rx="6.5" ry="8.5" transform="rotate(20 50 27)"/>
+      <path d="M32 30c-9 0-17 8.5-17 17 0 6 4.5 9 9.5 9 3 0 5-1.2 7.5-1.200S36.5 56 39.5 56c5 0 9.5-3 9.5-9 0-8.5-8-17-17-17z"/>
+    </symbol>
+    <symbol id="star" viewBox="0 0 24 24">
+      <path d="M12 0c.8 6.5 5.5 11.2 12 12-6.5.8-11.2 5.5-12 12-.8-6.5-5.5-11.2-12-12C6.5 11.2 11.2 6.5 12 0z"/>
+    </symbol>
+    <symbol id="heart" viewBox="0 0 24 24">
+      <path d="M12 21s-8.5-5.3-8.5-11.300A4.7 4.7 0 0 1 12 6.800a4.7 4.7 0 0 1 8.5 2.900C20.5 15.7 12 21 12 21z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<svg class="star"    style="top:7%;  left:9%;  width:26px; height:26px" aria-hidden="true"><use href="#star"/></svg>
+<svg class="star s2" style="top:16%; right:11%; width:18px; height:18px" aria-hidden="true"><use href="#star"/></svg>
+<svg class="star s3" style="top:34%; left:5%;  width:12px; height:12px" aria-hidden="true"><use href="#star"/></svg>
+<svg class="star s4" style="top:6%;  right:30%; width:11px; height:11px" aria-hidden="true"><use href="#star"/></svg>
+<svg class="star s2" style="top:58%; right:6%;  width:22px; height:22px" aria-hidden="true"><use href="#star"/></svg>
+<svg class="star s3" style="top:70%; left:12%; width:16px; height:16px" aria-hidden="true"><use href="#star"/></svg>
+
 <main>
-  <div class="paws" aria-hidden="true">🐾🐾🐾</div>
+  <div class="badge" aria-hidden="true"><svg><use href="#paw"/></svg></div>
   <h1>KURTULUŞ <span>Pati Dostları</span></h1>
-  <p class="slogan">Her patiye bir yuva</p>
-  <div class="rule"></div>
-  <p class="soon"><strong>Çok yakında</strong>Sahiplenmeyi bekleyen dostlarımız, bağış ve iletişim bilgilerimiz yakında bu sayfada olacak.</p>
+  <div class="divider" aria-hidden="true"><i></i><svg><use href="#heart"/></svg><i></i></div>
+  <p class="soon">Çok yakında</p>
 </main>
+
+<div class="paws" aria-hidden="true">
+  <svg viewBox="0 0 64 64"><use href="#paw"/></svg>
+  <svg viewBox="0 0 64 64"><use href="#paw"/></svg>
+  <svg viewBox="0 0 64 64"><use href="#paw"/></svg>
+  <svg viewBox="0 0 64 64"><use href="#paw"/></svg>
+  <svg viewBox="0 0 64 64"><use href="#paw"/></svg>
+  <svg viewBox="0 0 64 64"><use href="#paw"/></svg>
+  <svg viewBox="0 0 64 64"><use href="#paw"/></svg>
+</div>
+
 </body>
 </html>
